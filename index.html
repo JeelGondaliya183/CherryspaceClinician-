@@ -1174,21 +1174,11 @@
                 
                 clients.sort((a, b) => a.name.localeCompare(b.name));
                 
-                if (clients.length === 0) {
-                    console.log("⚠️ No clients found in Firebase. Loading demo data...");
-                    clients = getDemoClients();
-                    alert("No clients found in Firebase. Showing demo data.\n\nPlease check:\n1. Firebase config is correct\n2. You have added documents to the 'clients' collection\n3. Firestore rules allow reading");
-                } else {
-                    console.log(`✅ Successfully loaded ${clients.length} clients from Firebase`);
-                }
-                
                 renderClientList();
             } catch (error) {
                 console.error("❌ Error loading clients:", error);
                 console.error("Error details:", error.message);
-                
-                alert(`❌ Firebase Error: ${error.message}\n\nCheck the browser console (F12) for details.\n\nLoading demo data instead.`);
-                
+                                
                 clients = getDemoClients();
                 renderClientList();
             }
